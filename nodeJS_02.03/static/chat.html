@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="chat.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.6.0/socket.io.js"></script>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .msgMy {
+            background-color: blue;
+            color: white;
+            right: 0;
+            align-items: flex-end;
+            border-radius: 25px;
+            padding: 10px;
+            width: 70%;
+            margin: 5px;
+            margin-left: 20%;
+        }
+
+        .msgYrs {
+            left: 0;
+            width: 70%;
+            background-color: green;
+            color: aliceblue;
+            justify-self: start;
+            border-radius: 25px;
+            padding: 10px;
+            margin: 5px;
+        }
+
+        .joins {
+            background-color: aquamarine;
+            color: black;
+        }
+
+        .leaves {
+            background-color: red;
+            color: aliceblue;
+        }
+
+        .chat::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        .chat::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        .chat::-webkit-scrollbar-thumb {
+            background: #888;
+        }
+
+        .chat {
+            position: relative;
+            width: 80%;
+            min-width: 100px;
+            min-height: 400px;
+            height: 80%;
+            border: 1px solid black;
+            padding: auto;
+            margin: auto;
+            overflow: auto;
+        }
+
+        textarea {
+            padding: auto;
+            width: 80%;
+            margin: auto;
+            height: 10%;
+            left: 0;
+        }
+
+        #submit {
+            height: 10%;
+            width: 20%;
+            margin: auto;
+            right: 0;
+            background-color: purple;
+        }
+    </style>
+</head>
+
+<body>
+    <h1 id="h1">Zad 14 - Chat</h1>
+    <div style="width: 500px; height: 500px;">
+        <div class="chat" id="chat">
+        </div>
+        <textarea id="txtar"></textarea>
+        <div id="submit">send</div>
+    </div>
+
+</body>
+
+</html>
+
+<script>
+    window.onload = function () {
+        console.log('xd')
+        let nick = prompt('wpisz swoj nick')
+        document.getElementById('h1').innerText = `Twoj nick: ${nick}`
+        const client = io();
+
+        const d = new Date()
+
+        document.getElementById('submit').addEventListener('click', () => {
+            let msg = document.getElementById('txtar').value;
+            console.log('wysylam wiadomosc');
+            client.emit('sendmsg', {
+                nick: nick,
+                msg: msg,
+                hrs: d.getHours(),
+                min: d.getMinutes()
+            })
+            let div = document.createElement('div')
+            div.innerText = `me: ${msg} - ${d.getHours()}:${d.getMinutes()}`
+            div.classList.add('msgMy')
+            document.getElementById('chat').appendChild(div)
+        })
+
+        client.on('sendmsgemit', (data) => {
+            let div = document.createElement('div')
+            div.innerText = `${data.nick}: ${data.msg} - ${data.hrs}:${data.min}`
+            div.classList.add('msgYrs')
+            document.getElementById('chat').appendChild(div)
+        })
+
+        client.emit('join', {
+            nick: nick
+        })
+
+        client.on('joinemit', (data) => {
+            let div = document.createElement('div')
+            div.innerText = `${data.nick} doszedl do czatu`
+            div.classList.add('joins')
+            document.getElementById('chat').appendChild(div)
+        })
+
+        window.addEventListener('beforeunload', function (event) {
+            client.emit('leave', {
+                nick: nick
+            })
+        }, true);
+
+        client.on('leaveone', (data) => {
+            let div = document.createElement('div')
+            div.innerText = `${data.nick} wyszedl z czatu`
+            div.classList.add('leaves')
+            document.getElementById('chat').appendChild(div)
+        }
+        )
+    }
+</script>

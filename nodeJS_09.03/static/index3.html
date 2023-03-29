@@ -1,0 +1,76 @@
+<input type="text" name="f" id="f">
+<input type="text" name="h" id="h">
+<select name="typ" id="typ">
+    <option value="suma">suma</option>
+    <option value="roznica">roznica</option>
+    <option value="iloczyn">iloczyn</option>
+    <option value="iloraz">iloraz</option>
+    <option value="wszystko">wszystkie dzialania</option>
+</select>
+<button id="submit">submit</button>
+
+Cwiczenie 06 - color ranges, no form
+<div id="inputarea">
+    <input type="range" name="r" id="r" max="255" value="0">
+    <input type="range" name="g" id="g" max="255" value="0">
+    <input type="range" name="b" id="b" max="255" value="0">
+    <input type="range" name="a" id="a" max="100" value="100">
+</div>
+
+<div style="height: 200px; width: 200px;" id="divek"></div>
+<script>
+    document.getElementById('inputarea').addEventListener('mousedown', () => {
+        let r = parseInt(document.getElementById('r').value)
+        let g = parseInt(document.getElementById('g').value)
+        let b = parseInt(document.getElementById('b').value)
+        let a = parseInt(document.getElementById('a').value)
+        data = {
+            r: r,
+            g: g,
+            b: b,
+            a: a
+        }
+        fetch('kolor', {
+            method: 'POST',
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(data)
+        })
+            .then(response => response.json())
+            .then(data => {
+                console.log(data)
+                document.getElementById('divek').style.backgroundColor = data
+            })
+            .catch(err => console.log(err))
+    })
+    document.getElementById('submit').addEventListener('click', () => {
+        let f = parseInt(document.getElementById('f').value)
+        let h = parseInt(document.getElementById('h').value)
+        let typ = document.getElementById('typ').value
+        data = {
+            a: f,
+            b: h,
+            typ: typ
+        }
+        fetch('/obliczenia', {
+            method: 'POST',
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(data)
+        })
+            .then(response => response.json())
+            .then(data => {
+                console.log(typeof data)
+                alert(`Wynik ${typ} wynosi ${data}`)
+            }
+            )
+            .catch(error => console.log(error))
+
+
+        // fetch("/obliczenia")
+        //     .then((response) => response.json())
+        //     .then((data) => console.log(data));
+    })
+</script>

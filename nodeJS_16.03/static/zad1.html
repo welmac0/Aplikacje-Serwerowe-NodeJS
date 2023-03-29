@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+    <canvas id="myChart"></canvas>
+</body>
+
+</html>
+<script defer>
+    var dane
+    interval = setInterval(() => {
+        console.log('start');
+        fetch('/dane')
+            .then((response) => response.json())
+            .then((data) => {
+                console.log(data)
+                dane = data[0]
+            })
+            .catch(err => {
+                console.log(err)
+            })
+    }, 1200)
+
+    //chatgpt
+
+    // JavaScript:
+    // Initialize data arrays for chart
+    let totalmemData = [];
+    let freememData = [];
+
+    // Initialize Chart.js chart
+    const ctx = document.getElementById('myChart').getContext('2d');
+    const chart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: [],
+            datasets: [
+                {
+                    label: 'Total Memory',
+                    data: totalmemData,
+                    backgroundColor: 'rgba(0, 0, 255, 0.5)',
+                    borderColor: 'rgba(0, 0, 255, 1)',
+                    borderWidth: 1,
+                    fill: false
+                },
+                {
+                    label: 'Used Memory',
+                    data: freememData,
+                    backgroundColor: 'rgba(255, 0, 0, 0.5)',
+                    borderColor: 'rgba(255, 0, 0, 1)',
+                    borderWidth: 1,
+                    fill: false
+                }
+            ]
+        },
+        options: {
+            responsive: true,
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            }
+        }
+    });
+
+    // Update chart data every second
+    setInterval(() => {
+        const newData = [dane]; // Replace with your data array
+        const now = new Date().toLocaleTimeString();
+
+        // Add new data to data arrays
+        totalmemData.push(newData[0].totalmem);
+        freememData.push(newData[0].freemem);
+
+        // Remove oldest data from data arrays if length > 10
+        if (totalmemData.length > 10) {
+            totalmemData.shift();
+            freememData.shift();
+        }
+
+        // Add new label to labels array
+        chart.data.labels.push(now);
+
+        // Remove oldest label from labels array if length > 10
+        if (chart.data.labels.length > 10) {
+            chart.data.labels.shift();
+        }
+
+        // Update chart with new data and labels
+        chart.update();
+    }, 1500);
+
+</script>

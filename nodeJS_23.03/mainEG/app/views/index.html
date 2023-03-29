@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        h1 {
+            color: blue;
+            font-family: monospace;
+            text-decoration: underline;
+        }
+
+        .nextto {
+            left: 0;
+        }
+
+        select {
+            width: 30%;
+            margin: 10px;
+            height: 200px;
+            color: blue;
+        }
+
+        option {
+            margin: 5px;
+            background-color: bisque;
+            border-radius: 25px;
+            padding: 20px;
+            height: 10%;
+            width: 80%;
+        }
+
+        option:checked {
+            background-color: lightblue;
+        }
+
+        button {
+            background-color: bisque;
+            border: 1px solid gray;
+            border-radius: 15px;
+            color: gray;
+            padding: 20px;
+        }
+
+        button:hover {
+            background-color: aquamarine;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>T: MVC - Model, View, Controllerh</h1>
+    <div class="nextto">
+        <select name="zwierzeta" id="zwierzeta" class="sekcja" size="4">
+            <option value="kot">kot</option>
+            <option value="pies">pies</option>
+            <option value="krowa">krowa</option>
+        </select>
+        <select name="kolory" id="kolory" class="sekcja" size="4">
+            <option value="white">white</option>
+            <option value="black">black</option>
+            <option value="yellow">yellow</option>
+        </select>
+        <select name="wynikowe" id="wynikowe" class="sekcja" size="4">
+
+        </select>
+    </div>
+    <div class="nextto">
+        <button id="addone">add one</button>
+        <button id="getall">get all</button>
+        <button id="deleteselected">delete selected</button>
+        <button id="updateselected">update selected</button>
+    </div>
+</body>
+
+</html>
+<script defer>
+    let addone = document.getElementById('addone')
+    addone.addEventListener('click', () => {
+        let name = document.getElementById('zwierzeta').value
+        let color = document.getElementById('kolory').value
+        data = {
+            name: name,
+            color: color
+        }
+
+        fetch('/add', {
+            method: 'POST',
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(data)
+        })
+            .then(response => response.json())
+            .then(data => {
+                console.log(data)
+            })
+            .catch(err => console.log(err))
+
+        showNew()
+
+    })
+
+    let getall = document.getElementById('getall')
+    getall.addEventListener('click', () => {
+        //done
+        fetch('/getall')
+            .then((response) => response.json())
+            .then((data => {
+                console.log(data)
+                showNew()
+            }))
+            .catch(err => console.log(err))
+    })
+
+    let deleteselected = document.getElementById('deleteselected')
+    deleteselected.addEventListener('click', () => {
+        let zaznaczone = document.getElementById('wynikowe').value
+        data = {
+            id: zaznaczone
+        }
+
+        fetch('/delete', {
+            method: 'POST',
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(data)
+        })
+            .then(response => response.json())
+            .then(data => {
+                console.log(data)
+            })
+            .catch(err => console.log(err))
+        showNew()
+    })
+
+
+    let updateselected = document.getElementById('updateselected')
+    updateselected.addEventListener('click', () => {
+
+        let zaznaczone = document.getElementById('wynikowe').value
+        data = {
+            id: zaznaczone
+        }
+        fetch('/update', {
+            method: 'POST',
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(data)
+        })
+            .then(response => response.json())
+            .then(data => {
+                console.log(data)
+            })
+            .catch(err => console.log(err))
+        showNew()
+    })
+
+    function showNew() {
+        var wynikArr
+        let wynikowe = document.getElementById('wynikowe')
+        console.log('new')
+        wynikowe.innerHTML = ''
+        fetch('/getall')
+            .then((response) => response.json())
+            .then((data => {
+                console.log(data)
+                wynikArr = data
+                for (let i = 0; i < wynikArr.length; i++) {
+                    if (wynikArr[i] == null) {
+
+                    } else {
+                        let select = document.createElement('option')
+                        select.value = wynikArr[i].id
+                        select.innerText = `${wynikArr[i].name}`
+                        wynikowe.appendChild(select)
+                    }
+                }
+                console.log(wynikArr)
+                alert(JSON.stringify(wynikArr, null, 2).toString())
+            }))
+            .catch(err => console.log(err))
+
+
+
+
+    }
+</script>

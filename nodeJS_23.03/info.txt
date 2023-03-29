@@ -1,0 +1,9 @@
+async -> Tworzy funkcje synchroniczna (taka, ktora wywoluje sie linia po linii)
+await -> Tworzy czekanie na wywolujacego sie Promisa
+Promise -> obietnice zwrocenia czegokolwiek, zawsze cos sie musi zwrocic
+
+async (
+    await (
+        promise
+    )
+)
