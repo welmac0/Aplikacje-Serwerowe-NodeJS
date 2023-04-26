@@ -7,5 +7,9 @@
   },
   "author": "",
   "license": "ISC",
-  "description": ""
+  "description": "",
+  "dependencies": {
+    "formidable": "^1.2.2",
+    "tracer": "^1.1.6"
+  }
 }

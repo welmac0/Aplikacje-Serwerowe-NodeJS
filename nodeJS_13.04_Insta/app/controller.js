@@ -1,3 +1,5 @@
+//file controller & json controller
+
 // załącz klasę Animal i tablicę zwierząt
 const tasks = require('./taskmodel.js');
 
