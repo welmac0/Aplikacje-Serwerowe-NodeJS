@@ -2,7 +2,6 @@ getRequestData = async (req) => {
 
     return new Promise((resolve, reject) => {
         try {
-
             let body = "";
 
             req.on("data", (part) => {
@@ -10,14 +9,12 @@ getRequestData = async (req) => {
             });
 
             req.on("end", () => {
-                // mamy dane i zwracamy z promisy
                 resolve(body);
             });
-
         } catch (error) {
             reject(error);
         }
     })
-
 }
+
 module.exports = getRequestData

@@ -1,47 +1,17 @@
-### POST - nowe dane
+# POST - add a new photo
 
-POST http://localhost:3000/api/tasks HTTP/1.1
-content-type: application/json
-
-{    
-  "title": 1,
-  "description": 2,
-  "status":true
-}
-
-### GET - pobierz wszystkie dane
-GET http://localhost:3000/api/tasks HTTP/1.1
-
-### GET - pobierz jeden element wg id
-GET http://localhost:3000/api/tasks/1 HTTP/1.1
-
-### DELETE - usuń wg id
-DELETE http://localhost:3000/api/task/1 HTTP/1.1
-
-### PATCH - updatuj wg id
-PATCH  http://localhost:3000/api/tasks HTTP/1.1
-content-type: application/json
-
-{ 
-  "id":1,
-  "title": 1,
-  "description": 2,
-  "status":true
-}
-
-### POST - a new photo
 POST http://localhost:3000/api/photos HTTP/1.1
-Content-Type: multipart/form-data; boundary=----FormBoundary1234
+Content-Type: multipart/form-data; boundary=Boundary
 
-------FormBoundary1234
-Content-Disposition: form-data; name="file"; filename="input.jpg"
+--Boundary
+Content-Disposition: form-data; name="file"; filename="mybeautifulgf.jpeg"
 Content-Type: image/jpeg
 
-< ./input.jpg >
+< ./mybeautifulgf.jpeg
 
-------FormBoundary1234
+--Boundary
 Content-Disposition: form-data; name="album"
 Content-Type: text/plain
 
-nazwa_albumu
-------FormBoundary1234
+album
+--Boundary--
