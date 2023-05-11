@@ -21,4 +21,8 @@ updatePhoto = () => {
     // * to narazie pomijamy bo nie wiadomo jakie parametry tu beda zmieniane
 }
 
-module.exports = { addPhoto, deletePhoto, getPhoto, getAllPhotos, updatePhoto }
+getArrayLength = () => {
+    return fileArray.length
+}
+
+module.exports = { addPhoto, deletePhoto, getPhoto, getAllPhotos, updatePhoto, getArrayLength }
