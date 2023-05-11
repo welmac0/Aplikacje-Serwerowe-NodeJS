@@ -4,14 +4,14 @@ POST http://localhost:3000/api/photos HTTP/1.1
 Content-Type: multipart/form-data; boundary=Boundary
 
 --Boundary
-Content-Disposition: form-data; name="file"; filename="mybeautifulgf.jpeg"
+Content-Disposition: form-data; name="file"; filename="wer.jpeg"
 Content-Type: image/jpeg
 
-< ./mybeautifulgf.jpeg
+< ./wer.jpeg
 
 --Boundary
 Content-Disposition: form-data; name="album"
 Content-Type: text/plain
 
-album
+testuser001
 --Boundary--

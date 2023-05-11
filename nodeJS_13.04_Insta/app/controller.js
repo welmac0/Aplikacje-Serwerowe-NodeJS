@@ -1,28 +1,24 @@
-//file controller & json controller
+const { File, fileArray } = require('./model')
 
-// załącz klasę Animal i tablicę zwierząt
-const tasks = require('./taskmodel.js');
-
-module.exports = {
-    add: (title, description, status) => {
-        let newTask = new tasks.Task(title, description, status)
-        tasks.tasksArray.push(newTask)
-    },
-    delete: (id) => {
-        delete tasks.tasksArray[id - 1]
-    },
-    update: (id, title, description, status) => {
-        console.log(tasks.tasksArray[id - 1]);
-        tasks.tasksArray[id - 1].title = title;
-        tasks.tasksArray[id - 1].description = description;
-        tasks.tasksArray[id - 1].status = status;
-        console.log(tasks.tasksArray[id - 1]);
-    },
-    getall: () => {
-        return tasks.tasksArray
-    },
-    getone: (id) => {
-        return tasks.tasksArray[id - 1]
-    }
-
+addPhoto = (name, album, url) => {
+    let file = new File(name, album, url)
+    return file
 }
+
+deletePhoto = (id) => {
+    delete fileArray[id - 1]
+}
+
+getPhoto = (id) => {
+    return fileArray[id - 1]
+}
+
+getAllPhotos = () => {
+    return fileArray
+}
+
+updatePhoto = () => {
+    // * to narazie pomijamy bo nie wiadomo jakie parametry tu beda zmieniane
+}
+
+module.exports = { addPhoto, deletePhoto, getPhoto, getAllPhotos, updatePhoto }

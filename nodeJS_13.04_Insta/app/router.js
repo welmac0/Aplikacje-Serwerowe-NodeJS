@@ -9,16 +9,22 @@
 |__ index.js
 */
 const formidable = require('formidable')
+const controller = require('./controller')
 
 const router = async (req, res) => {
     if (req.url == '/api/photos' && req.method == "POST") {
         let form = formidable({})
-        form.uploadDir = __dirname + '/userdata/' // ? na path join
+        form.uploadDir = __dirname + '/userdata/incoming/'
         form.keepExtensions = true
         form.parse(req, function (err, fields, files) {
-            console.log(fields.album);
-            console.log(files.file.name);
+            let name = files.file.name
+            let album = fields.album
+            let url = files.file.path
+            let photo = controller.addPhoto(name, album, url)
+            res.end(JSON.stringify(photo))
         })
+    } else if (req.url == '/api/tasks' && req.method == 'GET') {
+
     }
 }
 

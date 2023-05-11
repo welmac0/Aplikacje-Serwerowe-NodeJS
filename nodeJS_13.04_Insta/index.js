@@ -4,3 +4,10 @@ const router = require("./app/router")
 http
     .createServer((req, res) => router(req, res))
     .listen(3000, () => console.log("listen on 3000"))
+
+/*
+* testuser01 -> album
+* poki nie ma funkcjonalnosci uzytkownikow, to bazuje na jednym userze
+
+* albumy beda tworzone w momencie utworzenia uzytkownika
+*/
