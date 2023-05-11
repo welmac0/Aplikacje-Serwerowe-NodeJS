@@ -13,8 +13,7 @@ const formidable = require('formidable')
 const router = async (req, res) => {
     if (req.url == '/api/photos' && req.method == "POST") {
         let form = formidable({})
-        console.log(__dirname)
-        form.uploadDir = __dirname + '/userdata/'
+        form.uploadDir = __dirname + '/userdata/' // ? na path join
         form.keepExtensions = true
         form.parse(req, function (err, fields, files) {
             console.log(fields.album);
