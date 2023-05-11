@@ -17,8 +17,8 @@ const router = async (req, res) => {
         form.uploadDir = __dirname + '/userdata/'
         form.keepExtensions = true
         form.parse(req, function (err, fields, files) {
-            console.log(fields);
-            console.log(files);
+            console.log(fields.album);
+            console.log(files.file.name);
         })
     }
 }
