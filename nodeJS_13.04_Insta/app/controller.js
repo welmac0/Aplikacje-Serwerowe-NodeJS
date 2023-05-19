@@ -9,6 +9,14 @@ deletePhoto = (id) => {
     delete fileArray[id - 1]
 }
 
+isNull = (id) => {
+    if (fileArray[id - 1] == null) {
+        return true
+    } else {
+        return false
+    }
+}
+
 getPhoto = (id) => {
     return fileArray[id - 1]
 }
@@ -25,4 +33,8 @@ getArrayLength = () => {
     return fileArray.length
 }
 
-module.exports = { addPhoto, deletePhoto, getPhoto, getAllPhotos, updatePhoto, getArrayLength }
+getPhotoTags = (id) => {
+    return fileArray[id - 1].tags
+}
+
+module.exports = { addPhoto, deletePhoto, getPhoto, getAllPhotos, updatePhoto, getArrayLength, isNull, getPhotoTags }

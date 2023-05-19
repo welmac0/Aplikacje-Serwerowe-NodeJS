@@ -14,6 +14,9 @@ class File {
                 lastModifiedDate: '01-01-1970'
             }
         ]
+        this.tags = [
+            
+        ]
 
         this.addToArray()
         this.changeDir(url)
