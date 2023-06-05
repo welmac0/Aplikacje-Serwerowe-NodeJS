@@ -3,6 +3,7 @@ const router = require("./app/router")
 const { starter } = require('./app/tagsModel')
 const tagsRouter = require('./app/tagsRouter')
 const filtersRouter = require('./app/filtersRouter')
+require('dotenv').config();
 
 http
     .createServer(async (req, res) => {
@@ -16,7 +17,7 @@ http
             await filtersRouter(req, res)
         }
     })
-    .listen(3000, () => { console.log("listen on 3000"); starter() })
+    .listen(process.env.APP_PORT, () => { console.log(`listen on ${process.env.APP_PORT}`); starter() })
 
 /*
 * testuser01 -> album
