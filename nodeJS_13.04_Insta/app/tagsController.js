@@ -1,9 +1,9 @@
 const { Tag, tagList, tagArray } = require('./tagsModel')
 
-addTag = (name) => {
+addTag = (name, popularity) => {
     let found = tagList.find(element => element == name)
     if (!found) {
-        let tag = new Tag(name)
+        let tag = new Tag(name, popularity)
         return tag
     }
 }

@@ -15,7 +15,6 @@ class File {
             }
         ]
         this.tags = [
-            
         ]
 
         this.addToArray()

@@ -11,7 +11,8 @@
 const formidable = require('formidable')
 const controller = require('./controller')
 const getBodyRequestData = require('./getRequestData')
-
+const logger = require('tracer').colorConsole();
+const tagsController = require('./tagsController')
 const router = async (req, res) => {
     if (req.url == '/api/photos' && req.method == "POST") {
         let form = formidable({})
@@ -51,10 +52,24 @@ const router = async (req, res) => {
             controller.deletePhoto(id)
             res.writeHead(200).end('Photo successfuly deleted')
         }
-    } else if (req.url == '/api/photos' && req.method == 'PATCH') {
+    } else if (req.url.match(/\/api\/photos\/tags\/([0-9]+)/) && req.method == 'PATCH') {
+        const matches = req.url.matchAll(/\/api\/photos\/tags\/([0-9]+)/g);
+        let id = Array.from(matches)[0][1] //<-- kradnie
         let data = JSON.parse(await getBodyRequestData(req))
-        console.log(data);
-        // * updatePhoto -> kiedy bedzie to robione to bedzie zmieniane
+
+        for (let i = 0; i < data.tags.length; i++) {
+            tagsController.addTag(data.tags[i])
+        }
+        res.writeHead(200).end(JSON.stringify(controller.updatePhotoTags(id, data.tags)))
+    } else if (req.url.match(/\/api\/photos\/tags\/([0-9]+)/) && req.method == 'GET') {
+        const matches = req.url.matchAll(/\/api\/photos\/tags\/([0-9]+)/g);
+        let id = Array.from(matches)[0][1] //<-- kradnie
+        let sentObject = {
+            'id': id.toString(),
+            'tags': JSON.stringify(controller.getPhotoTags(id))
+        }
+
+        res.writeHead(200).end(JSON.stringify(sentObject))
     } else {
         res.writeHead(404).end('API not found');
     }

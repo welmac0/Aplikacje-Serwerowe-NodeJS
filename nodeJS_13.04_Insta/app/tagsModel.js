@@ -1,7 +1,13 @@
+const logger = require('tracer').colorConsole();
+
 class Tag {
-    constructor(name) {
+    constructor(name, popularity) {
         this.id = tagArray.length + 1
-        this.popularity = 0
+        if (popularity) {
+            this.popularity = popularity
+        } else {
+            this.popularity = 0
+        }
         this.name = name
         this.addToArray()
         this.addToList()
@@ -16,8 +22,6 @@ class Tag {
     }
 }
 
-starter()
-
 let tagList = ["#love",
     "#instagood",
     "#fashion",
@@ -30,12 +34,12 @@ let tagList = ["#love",
     "#fun"]
 
 function starter() {
-    for (let i = 0; i < tagList.length; i++) {
+    for (let i = 0; i < 29; i++) {
         let newTag = new Tag(tagList[i])
     }
-    console.log(console.log(tagArray));
+    logger.info('Default tags have been created');
 }
 
 let tagArray = []
 
-module.exports = { Tag, tagList, tagArray }
+module.exports = { Tag, tagList, tagArray, starter }

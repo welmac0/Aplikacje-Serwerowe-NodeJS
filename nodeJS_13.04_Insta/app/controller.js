@@ -25,10 +25,6 @@ getAllPhotos = () => {
     return fileArray
 }
 
-updatePhoto = () => {
-    // * to narazie pomijamy bo nie wiadomo jakie parametry tu beda zmieniane
-}
-
 getArrayLength = () => {
     return fileArray.length
 }
@@ -37,4 +33,9 @@ getPhotoTags = (id) => {
     return fileArray[id - 1].tags
 }
 
-module.exports = { addPhoto, deletePhoto, getPhoto, getAllPhotos, updatePhoto, getArrayLength, isNull, getPhotoTags }
+updatePhotoTags = (id, tags) => {
+    fileArray[id - 1].tags.push(tags)
+    return fileArray[id - 1]
+}
+
+module.exports = { addPhoto, deletePhoto, getPhoto, getAllPhotos, updatePhotoTags, getArrayLength, isNull, getPhotoTags }
