@@ -1,4 +1,3 @@
-const { log } = require('console')
 const { File, fileArray } = require('./model')
 
 addPhoto = (name, album, url) => {
@@ -36,7 +35,6 @@ getPhotoTags = (id) => {
 
 updatePhotoTags = (id, addedTags) => {
     fileArray[id - 1].tags.push(...addedTags)
-    console.log(fileArray[id - 1]);
     return fileArray[id - 1]
 }
 
@@ -45,4 +43,9 @@ deletePhotoTags = (id) => {
     return fileArray[id - 1]
 }
 
-module.exports = { addPhoto, deletePhoto, getPhoto, getAllPhotos, updatePhotoTags, getArrayLength, isNull, getPhotoTags }
+getPhotosOfUser = (user) => {
+    result = fileArray.filter(obj => obj.album == user).map(obj => obj.id)
+    return result
+}
+
+module.exports = { getPhotosOfUser, addPhoto, deletePhoto, getPhoto, getAllPhotos, updatePhotoTags, getArrayLength, isNull, getPhotoTags }
