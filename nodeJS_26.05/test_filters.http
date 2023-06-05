@@ -1,14 +1,14 @@
 GET http://localhost:3000/api/filters/metadata/1
 
-###
-GET http://localhost:3000/api/photos/testuser001
+### dzialaja te 2 gety
+GET http://localhost:3000/api/photos/user/testuser001
 
 ###
 PATCH http://localhost:3000/api/filters
 
 {
     "id": 1,
-    "method": "tint",
+    "method": "reformat",
     "rotate": 0,
     "width": 100,
     "height": 100,
