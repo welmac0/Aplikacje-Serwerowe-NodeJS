@@ -72,8 +72,8 @@ const router = async (req, res) => {
         }
 
         res.writeHead(200).end(JSON.stringify(sentObject))
-    } else if (req.url.match(/\/api\/photos\/([A-z0-9]+)$/g)) {
-        const matches = req.url.matchAll(/\/api\/photos\/([A-z0-9]+)$/g);
+    } else if (req.url.match(/\/api\/photos\/user\/([A-z0-9]+)$/g)) {
+        const matches = req.url.matchAll(/\/api\/photos\/user\/([A-z0-9]+)$/g);
         let id = Array.from(matches)[0][1]
         console.log(controller.getPhotosOfUser(id))
         //res.writeHead(200).end(JSON.stringify())
