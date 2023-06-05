@@ -1,12 +1,13 @@
 const fs = require("fs")
 const logger = require('tracer').colorConsole();
+const path = require('path');
 
 class File {
     constructor(name, album, url) {
         this.id = fileArray.length + 1
         this.album = album
         this.originalName = name
-        this.url = __dirname + '\\userdata\\' + album + '\\' + name
+        this.url = path.join(__dirname, 'userdata', album, name)
         this.lastChange = 'original'
         this.history = [
             {

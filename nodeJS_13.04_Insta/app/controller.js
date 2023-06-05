@@ -1,3 +1,4 @@
+const { log } = require('console')
 const { File, fileArray } = require('./model')
 
 addPhoto = (name, album, url) => {
@@ -33,8 +34,14 @@ getPhotoTags = (id) => {
     return fileArray[id - 1].tags
 }
 
-updatePhotoTags = (id, tags) => {
-    fileArray[id - 1].tags.push(tags)
+updatePhotoTags = (id, addedTags) => {
+    fileArray[id - 1].tags.push(...addedTags)
+    console.log(fileArray[id - 1]);
+    return fileArray[id - 1]
+}
+
+deletePhotoTags = (id) => {
+    fileArray[id - 1].tags = []
     return fileArray[id - 1]
 }
 
