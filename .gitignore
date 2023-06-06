@@ -1,3 +1,5 @@
 node_modules/
 userdata/
 .DS_Store
+jwt_test.js
+bcrypt_test.js
