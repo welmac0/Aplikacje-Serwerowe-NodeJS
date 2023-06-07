@@ -1,6 +1,4 @@
 /*
-TODO:
-GET /api/photos/tags/12345 // pobranie tagów danego zdjęcia
 */
 const controller = require('./tagsController')
 const getBodyRequestData = require('./getRequestData')

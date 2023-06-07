@@ -1,0 +1,23 @@
+POST http://localhost:3000/api/user/register HTTP/1.1
+{    
+   "login": "name",
+   "email":"name@email.pl",
+   "password":"password"
+}
+# - sprawdzamy czy są wszystkie potrzebne dane
+# - szyfrujemy hasło bcryptem
+# - zapisujemy obiekt usera w pliku modelu
+# - uwaga na niepotwierdzone konto
+
+###
+GET http://localhost:3000/api/user/confirm/<token> HTTP/1.1
+
+###
+POST http://localhost:3000/api/user/login HTTP/1.1
+{ 
+  "email":"email",
+  "password":"password"
+}
+
+###
+POST http://localhost:3000/api/user HTTP/1.1

@@ -1,8 +1,0 @@
-GET http://localhost:3000/api/filters/metadata/1
-
-###
-GET http://localhost:3000/api/photos/user/testuser001
-
-###
-PATCH http://localhost:3000/api/filters
-

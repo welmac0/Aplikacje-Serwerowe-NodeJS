@@ -3,6 +3,7 @@ const router = require("./app/router")
 const { starter } = require('./app/tagsModel')
 const tagsRouter = require('./app/tagsRouter')
 const filtersRouter = require('./app/filtersRouter')
+const usersRouter = require('./app/usersRouter')
 require('dotenv').config();
 
 http
@@ -15,7 +16,9 @@ http
             await filtersRouter(req, res)
         } else if (req.url.search('/api/getfile') != -1) {
             await filtersRouter(req, res)
-        }
+        } else if (req.url.search("/api/user") != -1) {
+            await usersRouter(req, res)
+         }
     })
     .listen(process.env.APP_PORT, () => { console.log(`listen on ${process.env.APP_PORT}`); starter() })
 
