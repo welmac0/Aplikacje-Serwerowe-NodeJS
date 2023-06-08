@@ -1,0 +1,3 @@
+registerUseer = async (dane) => {
+    
+}
