@@ -1,19 +1,18 @@
 POST http://localhost:3000/api/user/register HTTP/1.1
+
 {    
    "name": "name",
    "email":"name@email.pl",
    "password":"password"
 }
-# - sprawdzamy czy są wszystkie potrzebne dane - to zostanie zrobione w reactie (weryfikacja danych wprowadzonych do formularza)
-# - szyfrujemy hasło bcryptem
-# - zapisujemy obiekt usera w pliku modelu
-# - uwaga na niepotwierdzone konto
+# - sprawdzamy czy są wszystkie potrzebne dane - to zostanie zrobione w react (weryfikacja danych wprowadzonych do formularza)
 
 ###
-GET http://localhost:3000/api/user/confirm/<token> HTTP/1.1
+GET http://localhost:3000/api/user/confirm/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im5hbWVAZW1haWwucGwiLCJpZCI6MSwiaWF0IjoxNjg2MjY1MDQ3LCJleHAiOjE2ODYzNTE0NDd9.R-7wOFc3qtJrMP3OQZHMFCn8LL3iDewdL1Nsz8sFMho HTTP/1.1
 
 ###
 POST http://localhost:3000/api/user/login HTTP/1.1
+
 { 
   "email":"email",
   "password":"password"

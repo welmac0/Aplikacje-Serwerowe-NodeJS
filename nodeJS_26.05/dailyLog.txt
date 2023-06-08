@@ -1,2 +1,3 @@
 05.06 - All Tags api works, path.join added. Time to do filters. To do: JWT
 06.06 - To do: Whole user api
+09.06 - To do: User Api  POST /api/user/login

@@ -2,6 +2,7 @@ const bcrypt = require('bcryptjs')
 const fs = require('fs')
 const path = require('path')
 const logger = require('tracer').colorConsole();
+const { createToken, verifyToken} = require('./createJWT')
 
 class User {
     constructor(name, email, password) {
@@ -10,12 +11,25 @@ class User {
         this.email = email
         this.password = this.encryptPassword(password)
         this.confirmed = false
-        //tutaj tworzenie albumu
-        
         if (this.whetherNameExists(name) != true) {
-            this.addToArray()
-            this.createAlbum(this.name)
+            this.message = new Promise(async (res) => {
+                {
+                    this.addToArray()
+                    this.createAlbum(this.name)
+                    await this.provideToken()
+                    res(this.message)
+                }
+            })
+        } else {
+            this.message = new Promise(async (res) => {
+                res(this.message = 'Takie konto juz istnieje')
+            })
         }
+    }
+
+    provideToken = async () => {
+        let token = await createToken(this.email, this.id)
+        this.message = `skopiuj poniższy link do przeglądarki\nhttp://localhost:3000/api/user/confirm/${token}\nw celu potwierdzenia konta\nUwaga: link jest ważny przez godzinę`
     }
 
     async encryptPassword(passwordText) {
@@ -28,12 +42,25 @@ class User {
     }
 
     createAlbum(name) {
-
+        let url = path.join(__dirname, 'userdata', name)
+        if (!fs.existsSync(url)) {
+            fs.mkdir(url, (err) => {
+                if (err) throw err
+                console.log("jest");
+            })
+        }
     }
 
     whetherNameExists(name) {
-
+        let found = userArray.find(element => element.name == name)
+        if (found) {
+            return true
+        } else {
+            return false
+        }
     }
 }
 
 let userArray = []
+
+module.exports = { User, userArray}
