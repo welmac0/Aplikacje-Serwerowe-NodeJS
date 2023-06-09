@@ -2,14 +2,15 @@ const bcrypt = require('bcryptjs')
 const fs = require('fs')
 const path = require('path')
 const logger = require('tracer').colorConsole();
-const { createToken, verifyToken} = require('./createJWT')
+const { createToken, verifyToken } = require('./createJWT')
 
 class User {
     constructor(name, email, password) {
         this.id = userArray.length + 1
         this.name = name
         this.email = email
-        this.password = this.encryptPassword(password)
+        this.setPass(password)
+
         this.confirmed = false
         if (this.whetherNameExists(name) != true) {
             this.message = new Promise(async (res) => {
@@ -26,6 +27,10 @@ class User {
             })
         }
     }
+
+    setPass = async (password) => {
+        this.password = await this.encryptPassword(password);
+    };
 
     provideToken = async () => {
         let token = await createToken(this.email, this.id)
@@ -63,4 +68,4 @@ class User {
 
 let userArray = []
 
-module.exports = { User, userArray}
+module.exports = { User, userArray }

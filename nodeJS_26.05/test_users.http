@@ -3,7 +3,7 @@ POST http://localhost:3000/api/user/register HTTP/1.1
 {    
    "name": "name",
    "email":"name@email.pl",
-   "password":"password"
+   "password":"ZAQ!xsw2"
 }
 # - sprawdzamy czy są wszystkie potrzebne dane - to zostanie zrobione w react (weryfikacja danych wprowadzonych do formularza)
 
@@ -15,8 +15,8 @@ POST http://localhost:3000/api/user/login HTTP/1.1
 
 { 
   "email":"name@email.pl",
-  "password":"password"
+  "password":"ZAQ!xsw2"
 }
 
 ###
-POST http://localhost:3000/api/user HTTP/1.1
+GET http://localhost:3000/api/user HTTP/1.1

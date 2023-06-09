@@ -1,0 +1,17 @@
+GET http://localhost:3000/api/profile HTTP/1.1
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2ODYzMTQzMzEsImV4cCI6MTY4NjQwMDczMX0.mKCuHvw5xFgKc4fuGBhu05wTKpW-f5SJ1EKnXByzQnA
+
+
+###
+PATCH http://localhost:3000/api/profile HTTP/1.1
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2ODYzMTMxNjMsImV4cCI6MTY4NjM5OTU2M30.4eVw4w4PLPoMu69q6ZORj57FGYHc-calhSTj9qKqWnA"
+
+
+###
+POST http://localhost:3000/api/profile HTTP/1.1
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2ODYzMTMxNjMsImV4cCI6MTY4NjM5OTU2M30.4eVw4w4PLPoMu69q6ZORj57FGYHc-calhSTj9qKqWnA"
+
+
+###
+GET http://localhost:3000/api/profile/logout HTTP/1.1
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2ODYzMTMxNjMsImV4cCI6MTY4NjM5OTU2M30.4eVw4w4PLPoMu69q6ZORj57FGYHc-calhSTj9qKqWnA"

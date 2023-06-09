@@ -1,7 +1,7 @@
 const { User, userArray } = require('./usersModel')
 const logger = require('tracer').colorConsole();
 const bcrypt = require('bcryptjs');
-const { createToken, verifyToken} = require('./createJWT')
+const { createToken, verifyToken } = require('./createJWT')
 
 registerUser = async (name, mail, password) => {
     let user = new User(name, mail, password)
@@ -32,10 +32,10 @@ listAll = () => {
 authorizeCredentials = async (mail, password) => {
     let foundUser = userArray.find(user => user.email == mail)
     if (foundUser) {
-        let result = decryptPass(password, foundUser.password)
+        let result = await decryptPass(password, foundUser.password)
         if (result == true) {
-            let token = await createToken(foundUser.mail, foundUser.id)
-            return `Bearer ${token}`
+            let token = await createToken(result.email, result.id)
+            return token
         }
     }
 }
@@ -43,8 +43,7 @@ authorizeCredentials = async (mail, password) => {
 
 const decryptPass = async (userpass, encrypted) => {
     let decrypted = await bcrypt.compare(userpass, encrypted)
-    console.log(decrypted);
-
+    return decrypted
 }
 
-module.exports = {registerUser, checkIfActivatedInTime, listAll, authorizeCredentials}
+module.exports = { registerUser, checkIfActivatedInTime, listAll, authorizeCredentials }
