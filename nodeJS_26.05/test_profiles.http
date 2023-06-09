@@ -1,17 +1,35 @@
 GET http://localhost:3000/api/profile HTTP/1.1
-authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2ODYzMTQzMzEsImV4cCI6MTY4NjQwMDczMX0.mKCuHvw5xFgKc4fuGBhu05wTKpW-f5SJ1EKnXByzQnA
-
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im5hbWVAZW1haWwucGwiLCJpZCI6MSwiaWF0IjoxNjg2MzMwMjE4LCJleHAiOjE2ODY0MTY2MTh9.P5jpG-bCUnuBoVImba1ZCz8bN7DJMV6_MCkXDTYtlsE
 
 ###
 PATCH http://localhost:3000/api/profile HTTP/1.1
-authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2ODYzMTMxNjMsImV4cCI6MTY4NjM5OTU2M30.4eVw4w4PLPoMu69q6ZORj57FGYHc-calhSTj9qKqWnA"
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im5hbWVAZW1haWwucGwiLCJpZCI6MSwiaWF0IjoxNjg2MzI5NjQyLCJleHAiOjE2ODY0MTYwNDJ9.qZRtHa_PNSgo4tGlQoa9BYVqHt23nBx7K8ljtaZq__w
 
-
-###
-POST http://localhost:3000/api/profile HTTP/1.1
-authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2ODYzMTMxNjMsImV4cCI6MTY4NjM5OTU2M30.4eVw4w4PLPoMu69q6ZORj57FGYHc-calhSTj9qKqWnA"
-
+{
+    "name": "dupka",
+    "firstName": "Maciej",
+    "surname": "Welpa",
+    "desc": "Jestem z Krakowa"
+}
 
 ###
 GET http://localhost:3000/api/profile/logout HTTP/1.1
-authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2ODYzMTMxNjMsImV4cCI6MTY4NjM5OTU2M30.4eVw4w4PLPoMu69q6ZORj57FGYHc-calhSTj9qKqWnA"
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im5hbWVAZW1haWwucGwiLCJpZCI6MSwiaWF0IjoxNjg2MzI5NjQyLCJleHAiOjE2ODY0MTYwNDJ9.qZRtHa_PNSgo4tGlQoa9BYVqHt23nBx7K8ljtaZq__w
+
+###
+POST http://localhost:3000/api/profile HTTP/1.1
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im5hbWVAZW1haWwucGwiLCJpZCI6MSwiaWF0IjoxNjg2MzI5NjQyLCJleHAiOjE2ODY0MTYwNDJ9.qZRtHa_PNSgo4tGlQoa9BYVqHt23nBx7K8ljtaZq__w
+Content-Type: multipart/form-data; boundary=Boundary
+
+--Boundary
+Content-Disposition: form-data; name="file"; filename="profile.jpg"
+Content-Type: image/jpeg
+
+< ./profile.jpg
+
+--Boundary
+Content-Disposition: form-data; name="album"
+Content-Type: text/plain
+
+testuser001
+--Boundary--

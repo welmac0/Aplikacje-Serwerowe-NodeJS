@@ -10,6 +10,9 @@ class User {
         this.name = name
         this.email = email
         this.setPass(password)
+        this.firstName = ''
+        this.surname = ''
+        this.description = ''
 
         this.confirmed = false
         if (this.whetherNameExists(name) != true) {

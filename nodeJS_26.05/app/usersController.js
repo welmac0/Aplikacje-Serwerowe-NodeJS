@@ -34,12 +34,11 @@ authorizeCredentials = async (mail, password) => {
     if (foundUser) {
         let result = await decryptPass(password, foundUser.password)
         if (result == true) {
-            let token = await createToken(result.email, result.id)
+            let token = await createToken(foundUser.email, foundUser.id)
             return token
         }
     }
 }
-
 
 const decryptPass = async (userpass, encrypted) => {
     let decrypted = await bcrypt.compare(userpass, encrypted)

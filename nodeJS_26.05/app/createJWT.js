@@ -3,6 +3,8 @@ require('dotenv').config();
 //proccess.env.JWT_KEY
 
 const createToken = async (mail, id) => {
+    console.log(`JWT mail: ${mail}`)
+    console.log(`JWT id: ${id}`);
     let token = await jwt.sign(
         {
             email: mail,

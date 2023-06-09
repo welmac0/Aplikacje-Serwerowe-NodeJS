@@ -14,11 +14,12 @@ const getBodyRequestData = require('./getRequestData')
 const logger = require('tracer').colorConsole();
 const tagsController = require('./tagsController')
 const sharp = require("sharp");
+const path = require('path')
 
 const router = async (req, res) => {
     if (req.url == '/api/photos' && req.method == "POST") {
         let form = formidable({})
-        form.uploadDir = __dirname + '/userdata/incoming/'
+        form.uploadDir = path.join(__dirname, 'userdata', 'incoming')
         form.keepExtensions = true
         form.parse(req, function (err, fields, files) {
             let name = files.file.name
