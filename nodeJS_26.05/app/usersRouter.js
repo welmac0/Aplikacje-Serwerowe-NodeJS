@@ -19,7 +19,10 @@ const router = async (req, res) => {
         console.log(request)
         res.writeHead(200).end(JSON.stringify(request))
     } else if (req.url == '/api/user/login' && req.method == "POST") {
-        // TODO
+        let data = JSON.parse(await getBodyRequestData(req))
+        let result = await controller.authorizeCredentials(data.mail, data.password)
+        // nie dziala
+        console.log(result)
     } else if (req.url == '/api/user' && req.method == "GET") {
         res.writeHead(200).end(JSON.stringify(controller.listAll()))
     }
