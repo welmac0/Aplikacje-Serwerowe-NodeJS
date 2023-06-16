@@ -76,6 +76,7 @@ const router = async (req, res) => {
     } else if (req.url.match(/\/api\/photos\/user\/([A-z0-9]+)$/g)) {
         const matches = req.url.matchAll(/\/api\/photos\/user\/([A-z0-9]+)$/g);
         let id = Array.from(matches)[0][1]
+        console.log(id);
         res.writeHead(200).end(JSON.stringify(controller.getPhotosOfUser(id)))
     } else {
         res.writeHead(404).end('API not found');

@@ -37,7 +37,7 @@ class User {
 
     provideToken = async () => {
         let token = await createToken(this.email, this.id)
-        this.message = `skopiuj poniższy link do przeglądarki\nhttp://localhost:3000/api/user/confirm/${token}\nw celu potwierdzenia konta\nUwaga: link jest ważny przez godzinę`
+        this.message = `skopiuj poniższy link do przeglądarki http://localhost:4200/api/user/confirm/${token} w celu potwierdzenia konta\nUwaga: link jest ważny przez godzinę`
     }
 
     async encryptPassword(passwordText) {

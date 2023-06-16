@@ -1,8 +1,9 @@
-GET http://localhost:3000/api/profile HTTP/1.1
-authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im5hbWVAZW1haWwucGwiLCJpZCI6MSwiaWF0IjoxNjg2MzMwMjE4LCJleHAiOjE2ODY0MTY2MTh9.P5jpG-bCUnuBoVImba1ZCz8bN7DJMV6_MCkXDTYtlsE
+GET http://localhost:4200/api/profile HTTP/1.1
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1hY2lla0BlbWFpbC5wbCIsImlkIjoxLCJpYXQiOjE2ODY4MjYzOTEsImV4cCI6MTY4NjkxMjc5MX0.yhuRYC2ZR7xAws4hH9H8JgZQ_2EnaaA2dbkhmMPUIHs
+
 
 ###
-PATCH http://localhost:3000/api/profile HTTP/1.1
+PATCH http://localhost:4200/api/profile HTTP/1.1
 authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im5hbWVAZW1haWwucGwiLCJpZCI6MSwiaWF0IjoxNjg2MzI5NjQyLCJleHAiOjE2ODY0MTYwNDJ9.qZRtHa_PNSgo4tGlQoa9BYVqHt23nBx7K8ljtaZq__w
 
 {
@@ -13,12 +14,12 @@ authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im5hbWVAZ
 }
 
 ###
-GET http://localhost:3000/api/profile/logout HTTP/1.1
+GET http://localhost:4200/api/profile/logout HTTP/1.1
 authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im5hbWVAZW1haWwucGwiLCJpZCI6MSwiaWF0IjoxNjg2MzI5NjQyLCJleHAiOjE2ODY0MTYwNDJ9.qZRtHa_PNSgo4tGlQoa9BYVqHt23nBx7K8ljtaZq__w
 
 ###
-POST http://localhost:3000/api/profile HTTP/1.1
-authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im5hbWVAZW1haWwucGwiLCJpZCI6MSwiaWF0IjoxNjg2MzI5NjQyLCJleHAiOjE2ODY0MTYwNDJ9.qZRtHa_PNSgo4tGlQoa9BYVqHt23nBx7K8ljtaZq__w
+POST http://localhost:4200/api/profile HTTP/1.1
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1hY2lla0BlbWFpbC5wbCIsImlkIjoxLCJpYXQiOjE2ODY4MjM5MDYsImV4cCI6MTY4NjkxMDMwNn0.6kN3ciQl3LkO7i7hDhmjhjV0vMm8cfl16HmCo1o4Iw8
 Content-Type: multipart/form-data; boundary=Boundary
 
 --Boundary
@@ -31,5 +32,5 @@ Content-Type: image/jpeg
 Content-Disposition: form-data; name="album"
 Content-Type: text/plain
 
-testuser001
+edf
 --Boundary--

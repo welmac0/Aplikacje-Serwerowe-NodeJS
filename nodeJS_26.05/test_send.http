@@ -1,6 +1,6 @@
 # POST - add a new photo
 
-POST http://localhost:3000/api/photos HTTP/1.1
+POST http://localhost:4200/api/photos HTTP/1.1
 Content-Type: multipart/form-data; boundary=Boundary
 
 --Boundary

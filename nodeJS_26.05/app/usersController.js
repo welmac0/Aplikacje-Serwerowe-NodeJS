@@ -13,7 +13,7 @@ registerUser = async (name, mail, password) => {
 
 checkIfActivatedInTime = async (token) => {
     let result = await verifyToken(token)
-    if (result.success) {
+    if (result.success && userArray[result.success.id - 1].confirmed == false) {
         let id = result.success.id
         userArray[id - 1].confirmed = true
         delete userArray[id - 1].message

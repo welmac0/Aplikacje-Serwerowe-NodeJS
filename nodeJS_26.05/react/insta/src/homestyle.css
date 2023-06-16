@@ -1,0 +1,19 @@
+.gallery {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.gallery img {
+    width: 500px;
+    height: 500px;
+    padding: 20px;
+}
+
+.photo {
+    display: flex;
+    flex-direction: column;
+    background-color: aliceblue;
+    margin: 2px;
+    border: 1px solid black;
+}

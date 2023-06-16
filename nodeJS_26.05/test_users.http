@@ -1,23 +1,23 @@
-POST http://localhost:3000/api/user/register HTTP/1.1
+POST http://localhost:4200/api/user/register HTTP/1.1
 
 {    
-   "name": "name",
-   "email":"name@email.pl",
+   "name": "maciek",
+   "email":"maciek@email.pl",
    "password":"ZAQ!xsw2"
 }
-# - sprawdzamy czy są wszystkie potrzebne dane - to zostanie zrobione w react (weryfikacja danych wprowadzonych do formularza)
-
-###
-GET http://localhost:3000/api/user/confirm/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im5hbWVAZW1haWwucGwiLCJpZCI6MSwiaWF0IjoxNjg2MzI4OTkwLCJleHAiOjE2ODY0MTUzOTB9.k_G-aWKPMK6vdcERISokHcLFG0MOmR7mO6yc3d4dDO8
 
 
 ###
-POST http://localhost:3000/api/user/login HTTP/1.1
+GET http://localhost:4200/api/user/confirm/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im5hbWVAZW1haWwucGwiLCJpZCI6MSwiaWF0IjoxNjg2ODIxOTQwLCJleHAiOjE2ODY5MDgzNDB9.F4_pz4McMO_-K684AWB0pOjoRiWNq2WIneK8VTKfT48
+
+
+###
+POST http://localhost:4200/api/user/login HTTP/1.1
 
 { 
-  "email":"name@email.pl",
+  "email":"maciek@email.pl",
   "password":"ZAQ!xsw2"
 }
 
 ###
-GET http://localhost:3000/api/user HTTP/1.1
+GET http://localhost:4200/api/user HTTP/1.1

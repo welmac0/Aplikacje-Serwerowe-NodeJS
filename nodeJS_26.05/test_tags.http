@@ -1,13 +1,13 @@
-GET http://localhost:3000/api/tags/raw
+GET http://localhost:4200/api/tags/raw
 
 ###
-GET http://localhost:3000/api/tags HTTP/1.1
+GET http://localhost:4200/api/tags HTTP/1.1
 
 ###
-GET http://localhost:3000/api/tags/1 HTTP/1.1
+GET http://localhost:4200/api/tags/1 HTTP/1.1
 
 ###
-POST http://localhost:3000/api/tags HTTP/1.1
+POST http://localhost:4200/api/tags HTTP/1.1
 
 {   
   "name":"#nowytag",
@@ -15,11 +15,11 @@ POST http://localhost:3000/api/tags HTTP/1.1
 }
 
 ###
-PATCH http://localhost:3000/api/photos/tags/1 HTTP/1.1
+PATCH http://localhost:4200/api/photos/tags/1 HTTP/1.1
 
 {
      "tags": ["#nowytagdlazdjęcia"]
 }
 
 ###
-GET http://localhost:3000/api/photos/tags/1 HTTP/1.1
+GET http://localhost:4200/api/photos/tags/1 HTTP/1.1

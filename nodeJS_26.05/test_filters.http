@@ -1,10 +1,10 @@
-GET http://localhost:3000/api/filters/metadata/1
+GET http://localhost:4200/api/filters/metadata/1
 
 ### dzialaja te 2 gety
-GET http://localhost:3000/api/photos/user/testuser001
+GET http://localhost:4200/api/photos/user/edf
 
 ###
-PATCH http://localhost:3000/api/filters
+PATCH http://localhost:4200/api/filters
 
 {
     "id": 1,
@@ -21,6 +21,6 @@ PATCH http://localhost:3000/api/filters
 }
 
 ###
-GET http://localhost:3000/api/getfile/1
+GET http://localhost:4200/api/getfile/5
 
 
